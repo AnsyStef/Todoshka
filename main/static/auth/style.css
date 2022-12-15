@@ -1,0 +1,38 @@
+.form-class{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    left: 45%;
+    border-radius: 5px;
+}
+form p{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#name{
+    left:47.7%;
+    position: absolute;
+    font-size: xx-large;
+    top: 30px;
+}
+#username{
+    top:150px;
+}
+#password{
+    top:250px;
+}
+#btn{
+    position: absolute;
+    left:48.5%;
+    top:350px;
+}
+#wrapper{
+    width: 200px;
+    height: 200px;
+    background-color: brown;
+}
+body{
+    background-color: #6699FF;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

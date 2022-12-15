@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'post_new/style.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'common/logo.ico' %}">
+    <title>Todoshka: Post New</title>
+</head>
+<body>
+    <a href="/"><img style="width: 100px; height: 100px;" src="{% static 'common/logo.png' %}"></a>
+    <div id="bg">
+        <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-class"><p>Название</p>
+                        <span style="position:relative; left:200px;">{{ form.name }}</span>
+                    </div>
+                    <div class="form-class"><p>Описание</p>
+                        <span style="position:relative; left:200px;">{{ form.description }}</span>
+                    </div>
+                    <div class="form-class"><p>Важность</p>
+                        <span style="position:relative; left:230px;">{{ form.priority }}</span>
+                    </div>
+                    <div class="form-class"><p>Публично</p>
+                        <span style="position: relative; top:-33px; left:330px;">{{ form.is_public }}</span>
+                        <span style="position: relative; top:-33px; left:380px;">{{ form.creator }}</span>
+                    </div>
+                    <button style="position:relative; left:250px;" onclick="window.location=`{% url 'post' username=user.username %}`" type="submit">Создать</button>
+        </form>
+    </div>
+</body>
+</html>

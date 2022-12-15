@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'registration/style.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'common/logo.ico' %}">
+    <title>Todoshka: Registration</title>
+</head>
+<body>
+    <a href="/"><img style="width: 100px; height: 100px;" src="{% static 'common/logo.png' %}"></a>
+    <div id="bg"></div>
+        <form action="" method="post"><p id="name">Регистрация</p>
+            {% csrf_token %}
+            <div class="form-class" id="username"><p>Имя пользователя</p>
+                <span>{{ form.username }}</span>
+            </div>
+            <div class="form-class" id="password"><p>Пароль</p>
+                <span>{{ form.password }}</span>
+            </div>
+            <button type="submit" id="btn">Регистрация</button>
+        </form>
+        <a style="position:absolute; left:49%; top:420px;" href="/login/">Вход</a>
+</body>
+</html>

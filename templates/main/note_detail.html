@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'common/logo.ico' %}">
+    <link rel="stylesheet" href="{% static 'detail/style.css' %}">
+    <title>Todoshka: {{note.name}}</title>
+</head>
+<body>
+    <a href="/"><img style="width: 100px; height: 100px;" src="{% static 'common/logo.png' %}"></a>
+    <div id="info"> <h1>Информация о заметке {{note.name}}:</h1>
+        <p>Название: {{note.name}}</p>
+        <p>Описание: {{note.description}}</p>
+        {% if note.priority == '3' %}
+            <p>Важность: <span style="color: red; -webkit-text-stroke: 0.5px black;">Очень важно</span></p>
+        {% elif note.priority == '2' %}
+            <p>Важность: <span style="color: orange; -webkit-text-stroke: 0.5px black;">Важно</span></p>
+        {% elif note.priority == '1' %}
+            <p>Важность: <span style="color: green; -webkit-text-stroke: 0.5px black;">Не важно</span></p>
+        {% endif %}
+        {% if note.worker %}
+            <p>Исполнитель: {{note.worker}}</p>
+        {% else %}
+            <p>Исполнитель: Нет</p>
+        {% endif %}
+        <p>Статус:
+            {% if 'Выполнено' in note.status %}
+            <span style="color: green; -webkit-text-stroke: 0.5px black;">Выполнено</span>
+            {% elif note.status == 'Выполняется' %}
+            <span style="color: orange; -webkit-text-stroke: 0.5px black;">Выполняется</span>
+            {% elif note.status == 'Ожидает исполнителя' %}
+            <span style="color: black;">Ожидает исполнителя</span>
+            {% endif %}
+        <p>Публично: {% if note.is_public %}Да {% else %}Нет{% endif %}</p>
+        <p>Создатель: {{ note.creator }}</p>
+    </div>
+    {% if not note.worker or note.worker == user.username or note.creator == user.username%}
+    <div style="max-width: 100vh;" id="buttons">
+        {% if not note.worker %}
+        <button id="accept" onclick="window.location=`{% url 'note_accept' pk=note.pk  username=user.username%}`">Принять</button><br>
+        {% endif %}
+        {% if note.status == 'Выполняется' and note.worker == user.username %}
+        <button id="accept" onclick="window.location=`{% url 'complete' pk=note.pk%}`">Выполнено</button>
+        {% endif %}
+        {% if note.creator == user.username or note.worker == user.username %}
+        <button id="delete" onclick="window.location='delete/'">Удалить</button>
+        {% endif %}
+    {% endif %}
+    </div>
+</body>
+</html>

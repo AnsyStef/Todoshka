@@ -1,0 +1,33 @@
+{% if user.username == 'ansys' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'common/debug.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'common/logo.ico' %}">
+    <title>Todoshka: Registration</title>
+</head>
+<body>
+    <a href="/"><img style="width: 100px; height: 100px;" src="{% static 'common/logo.png' %}"></a>
+    <div id="panel">
+        <div id="create_example">
+<div class="container">
+        
+        <div class="switch-holder">
+            <div class="switch-label">
+                <i class="fa fa-bluetooth-b"></i><span>Сбросить таблицу</span>
+            </div>
+            <div class="switch-toggle">
+                <input type="button" onclick="window.location='dropdb/'" style="position: absolute;left:280px;top: 110px;text-decoration: none;background: rgba(179, 179, 179, 0.77);;color: #f7f0f0;padding: 12px 24px;border-radius: 25px;font-size: 15px;transition: 0.4s;box-shadow: 0px 4px 10px rgba(103, 95, 95, 0.54), 0px 10px 30px -15px rgba(14, 14, 14, 0.42);border: 2px solid #e3e6ec">
+                <label for="bluetooth"></label>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% else %}
+<script>window.onload=window.location='/notfound/'</script>
+{% endif %}

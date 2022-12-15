@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        {% load widget_tweaks %}
+
+        <link rel="stylesheet" href="{% static 'common/style.css' %}">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="image/png" sizes="32x32" rel="icon" href="{% static 'common/logo.ico' %}">
+        <title>Todoshka</title>
+
+        <script src="{% static 'common/script.js' %}"></script>
+
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="upper-tab">
+                <div class="upper-content">
+                    <a href="/"><img style="width: 100px; height: 100px;" src="{% static 'common/logo.png' %}"></a>
+                    <button style="font-family:'Franklin Gothic Medium'; left:120px;" onclick="window.location.href='postnew/'">Добавить</button>
+                    <button style="font-family:'Franklin Gothic Medium'; left:280px;" onclick="window.location=`{% url 'my_notes' username=user.username %}`">Принятые</button>
+                    {% if user.username == 'ansys' %}
+                    <button style="font-family:'Franklin Gothic Medium'; left:1350px;" onclick="window.location='/debugtools/'">Debug Tools</button>
+                    {% endif %}
+                    <button style="font-family:'Franklin Gothic Medium'; left:1510px;" onclick="window.location='logout/'">Выйти <strong>{{ user.username }}</strong></button>
+                </div>
+            </div>
+        </div>
+        {% for note in note_list %}
+        {% if note.status == 'completed' %}
+            <div class="note" onclick="window.location=`{% url 'note_detail' pk=note.pk %}`">
+                {{ note.name }}
+            </div>
+            {% endif %}
+        {% endfor %}
+    </body>
+</html>

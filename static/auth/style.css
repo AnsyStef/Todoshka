@@ -1,0 +1,65 @@
+.form-class{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    left: 45%;
+    border-radius: 5px;
+}
+#username{
+    top:150px;
+}
+#password{
+    top:250px;
+}
+#btn{
+    position: absolute;
+    left:800px;
+    top:350px;
+}
+
+.form-class{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    left: 45%;
+    border-radius: 5px;
+}
+form p{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#name{
+    left:810px;
+    position: absolute;
+    font-size: xx-large;
+    top: 30px;
+}
+#bg{
+    background-color: rgba(255, 255, 255, 0.4);
+    left:550px;
+    top: 40px;
+    position: absolute;
+    width: 600px;
+    height: 500px;
+    border-radius: 15px;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    min-height: 100vh;
+    background-image: linear-gradient(125deg,#042a7da3,#9108f488);
+}
+button{
+    position: absolute;
+    top: 40px;
+    text-decoration: none;
+    background: rgba(0, 132, 255, 0.77);;
+    color: #f7f0f0;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 15px;
+    transition: 0.4s;
+    box-shadow: 0px 4px 10px rgba(103, 95, 95, 0.54), 0px 10px 30px -15px rgba(14, 14, 14, 0.42);
+    border: 2px solid #e3e6ec;
+}
+button:hover{
+    background-image: linear-gradient(125deg,#35508c,#000000);
+}
