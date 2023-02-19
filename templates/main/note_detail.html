@@ -11,7 +11,7 @@
 </head>
 <body>
     <a href="/"><img style="width: 100px; height: 100px;" src="{% static 'common/logo.png' %}"></a>
-    <div id="info"> <h1>Информация о заметке {{note.name}}:</h1>
+    <div id="info"> <h1>Информация о задаче "{{note.name}}":</h1>
         <p>Название: {{note.name}}</p>
         <p>Описание: {{note.description}}</p>
         {% if note.priority == '3' %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+
+        <link rel="stylesheet" href="{% static 'groups/style.css' %}">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="image/png" sizes="32x32" rel="icon" href="{% static 'common/logo.ico' %}">
+        <script src="{% static 'common/script.js' %}"></script>
+        <title>Todoshka: {{group.group_name}}</title>
+
+    </head>
+    <body>
+        <a href="/"><img style="width: 100px; height: 100px; top: 2px;" src="{% static 'common/logo.png' %}"></a>
+        <h1 style="position: absolute; display: inline; margin: 2.5% auto auto 1%;">Группа {{group.group_name}}</h1>
+        <button style="position: absolute; display: inline; margin: 2.5% 1% auto auto; right:0; background-color: brown;" onclick="window.location='leave/'">Покинуть группу</button>
+        <p style="margin-left: 45%; left: 0;">Содержимое в разработке</p>
+        <image style="width: 100%; height: 100%; opacity: 0.3;" src="{% static 'common/dev.jpg' %}"></image>
+        <!-- <div id="group-stats">
+            1
+        </div>
+        <div id="group-activity">
+            1
+        </div>
+        <div id="group-members-list">
+            Управление пользователями
+            {% for member in members_list %}
+            <div class="member" onclick="">
+                {{member.user}}
+            </div>
+            {% endfor %}
+        </div> -->
+    </body>
+</html>

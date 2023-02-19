@@ -1,70 +1,92 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: "montserrat",sans-serif;
+    font-family: 'Jura';
     min-height: 100vh;
     background-image: linear-gradient(125deg,#042a7da3,#9108f488);
   }
 html{
-    font-family: 'Franklin Gothic Medium';
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.upper-tab{
-    background-color: #3366FF;
-    width: 100%;
-    transition-duration: 1s;
-    height: 40px;
-    position: relative;
-    bottom: 16px;
-    border-bottom-left-radius: 10px;
+
+
+#tab{
+    position: fixed;
+    height: 100%;
+    width: 60px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #35508c;
+    border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    font-size: larger;
 }
-.upper-content{
-    display: none;
-    background-image: linear-gradient(125deg,#072cb2bc,#9397f0c2);
-}
-.upper-content button{
+#tab #menu-btn{
     position: absolute;
-    top: 40px;
-    text-decoration: none;
-    background: rgba(0, 132, 255, 0.77);;
-    color: #f7f0f0;
-    padding: 12px 24px;
-    border-radius: 25px;
-    font-size: 15px;
-    transition: 0.4s;
-    box-shadow: 0px 4px 10px rgba(103, 95, 95, 0.54), 0px 10px 30px -15px rgba(14, 14, 14, 0.42);
-    border: 2px solid #e3e6ec;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+}
+#exit-btn{
+    position: absolute;
+    right: 0;
+    bottom:0;
+    width: 40px;
+    height: 40px;
+}
+#tab p{
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
+}
+
+#tab-content{
+    display: none;
+}
+
+#tab-content button{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: none;
+    text-decoration:none;
+    display:block;
+    width: 100%;
+    text-align:center;
+    margin:20px auto;
+    padding:10px 10px;
+    transition:all 0.3s;
+    border: none;
+}
+#tab-content button:hover{
+    box-shadow:0px -5px 0 #088 inset;
 }
 button{
-    position: absolute;
-    top: 40px;
-    text-decoration: none;
-    background: rgba(0, 132, 255, 0.77);;
-    color: #f7f0f0;
-    padding: 12px 24px;
-    border-radius: 25px;
-    font-size: 15px;
-    transition: 0.4s;
-    box-shadow: 0px 4px 10px rgba(103, 95, 95, 0.54), 0px 10px 30px -15px rgba(14, 14, 14, 0.42);
-    border: 2px solid #e3e6ec;
+    font-family: 'Jura';
+    background: none;
+    text-decoration:none;
+    display:block;
+    text-align:center;
+    margin:20px auto;
+    padding:10px 10px;
+    transition:all 0.3s;
+    border: none;
 }
-.upper-content button:hover{
-    background-image: linear-gradient(125deg,#35508c,#000000);
-}
-.upper-tab:hover{
-    transition-duration: 400ms;
-    height: 100px;
-}
-.upper-tab:hover .upper-content{
-    display: block;
+button:hover{
+    box-shadow:0px -5px 0 #088 inset;
 }
 .note{
-    margin-top: 10px;
-    margin-right: 5px;
-    margin-left: 5px;
+    z-index: 2;
+    margin-top: 2%;
+    margin-right: 1%;
+    margin-left: 5%;
     padding-left: 5px;
     background-color: rgba(255, 255, 255, 0.4);
-    font-family: 'Franklin Gothic Medium';
+    font-family: 'Jura';
     border-radius: 8px;
     width: fit-content;
     height: 60px;

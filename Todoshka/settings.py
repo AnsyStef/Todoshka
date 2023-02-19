@@ -24,14 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-l6ud-ev%cexe&#vlz!_difl=x*4#g_qae=5+398ynz*=q35l7f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
-ALLOWED_HOSTS = ["127.0.0.1",'todoshka']
+DEBUG = True
+ALLOWED_HOSTS = ["6efb-84-53-216-17.ngrok.io", "127.0.0.1", "192.168.99.102"]
+
+CSRF_TRUSTED_ORIGINS = ['https://6efb-84-53-216-17.ngrok.io']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'webpush',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
-    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'main.middleware.checkAuth.AuthMiddleware'
 ]
 
 ROOT_URLCONF = 'Todoshka.urls'
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'Todoshka.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["D:/Py/Todoshka/templates"],
+        'DIRS': [str(BASE_DIR)+"/templates/"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,15 +79,10 @@ WSGI_APPLICATION = 'Todoshka.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'todoshka',
-        'USER': 'postgres',
-        'PASSWORD': 'buhjntrf19',
-        'HOST': 'localhost',
-        'PORT': '8080',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

@@ -2,64 +2,40 @@
 <html lang="en">
     <head>
         {% load static %}
-        {% load widget_tweaks %}
 
         <link rel="stylesheet" href="{% static 'common/style.css' %}">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="image/png" sizes="32x32" rel="icon" href="{% static 'common/logo.ico' %}">
-        <title>Todoshka</title>
-
-        <script src="{% static 'common/script.js' %}"></script>
+        <script src="{% static 'common/js/script.js' %}"></script>
 
     </head>
     <body>
-        <script type="module">
-            // Import the functions you need from the SDKs you need
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
-            // TODO: Add SDKs for Firebase products that you want to use
-            // https://firebase.google.com/docs/web/setup#available-libraries
-          
-            // Your web app's Firebase configuration
-            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-            const firebaseConfig = {
-              apiKey: "AIzaSyDDtP0ViYGzKiFiXECibzR6G240D7isQ1o",
-              authDomain: "todoshka-163ac.firebaseapp.com",
-              projectId: "todoshka-163ac",
-              storageBucket: "todoshka-163ac.appspot.com",
-              messagingSenderId: "342648997517",
-              appId: "1:342648997517:web:cf02cf748f7ae0169244c4",
-              measurementId: "G-HGZ7RWNJ4T"
-            };
-          
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            const analytics = getAnalytics(app);
-          </script>
         <div class="wrapper">
-            <div class="upper-tab">
-                <div class="upper-content">
-                    <a href="/"><img style="width: 100px; height: 100px; top: 2px;" src="{% static 'common/logo.png' %}"></a>
-                    <button style="font-family:'Franklin Gothic Medium'; left:120px;" onclick="window.location=`{% url 'post' username=user.username %}`">Добавить</button>
-                    <button style="font-family:'Franklin Gothic Medium'; left:280px;" onclick="window.location=`{% url 'my_notes' username=user.username %}`">Принятые</button>
-                    <button style="font-family:'Franklin Gothic Medium'; left:440px;" onclick="window.location='/notes/completed/'">Выполненные</button>
-                    <button style="font-family:'Franklin Gothic Medium'; left:600px;" onclick="window.location='/notes/free/'">Свободные</button>
-                    {% if user.username == 'ansys' %}
-                    <button style="font-family:'Franklin Gothic Medium'; left:1350px;" onclick="window.location='/debugtools/'">Debug Tools</button>
-                    {% endif %}
-                    <button style="font-family:'Franklin Gothic Medium'; left:1510px;" onclick="window.location='/logout/'">Выйти <strong><u>{{ user.username }}</u></strong></button>
+            <div id="tab">
+                <img id="menu-btn" src="{% static 'common/svg/menu.svg' %}" onclick="TabController()" alt="Меню" style="z-index: 10;">
+                <div id="tab-content">
+                    <p>{{ user.username }}</p>
+                    <button class="menu-btn" onclick="window.location=`{% url 'post' username=user.username %}`">Добавить</button>
+                    <button class="menu-btn" onclick="window.location=`{% url 'my_notes' username=user.username %}`">Принятые</button>
+                    <button class="menu-btn" onclick="window.location='/notes/completed/'">Выполненные</button>
+                    <button class="menu-btn" onclick="window.location='/notes/free/'">Свободные</button>
+                    <button class="menu-btn" onclick="window.location='/group/join/'">Группа</button>
+                    <button id="exit-btn" onclick="window.location='/logout/'">Выйти</button>
                 </div>
             </div>
         </div>
-        {% if note_list|length == 0 %}
-        <h1 style="font-family: 'Franklin Gothic Medium'; left: 610px; position: absolute; top:200px;">Пока что здесь ничего нет.</h1>
-        <object style="height:300px; width:300px; position: absolute; left: 650px; top:300px;" type="image/svg+xml" data="{% static 'common/empty.svg' %}" id=’object’ class=’icon’></object>
-        {% else %}
+        {% block content %}{% endblock %}
         {% for note in note_list %}
+        {% if user.username in members_list %}
+        {% if user.username in members_list and note.creator in members_list%}
             {% block condition %}{% endblock %}
-        {% endfor %}
         {% endif %}
+        {% else %}
+        <h1 style="position: absolute; margin: 5% auto 0 30%;">Для начала работы вступите в группу.</h1>
+        <button onclick="window.location='/group/join/'" style="font-size: x-large; margin: 10% auto 0 47%; position: absolute;">Вступить</button>
+        {% endif %}
+        {% endfor %}
     </body>
 </html>

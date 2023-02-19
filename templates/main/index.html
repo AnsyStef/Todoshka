@@ -1,10 +1,12 @@
 {% extends 'main/base.html' %}
-{% load static %}
+
             {% block condition %}
+            {% if user.username in members_list and note.creator in members_list%}
+            <title>Todoshka: Main</title>
             {% if note.is_public or note.creator == user.username %}
             <div class="note" onclick="window.location=`{% url 'note_detail' pk=note.pk %}`">
                 <p>Название:<br>{{ note.name }}</p>
-                <p style="position:relative">Важность<br>
+                <p>Важность<br>
                     {% if note.priority == '3' %}
                     <span style="color: red; -webkit-text-stroke: 0.5px black;">Очень важно</span>
                     {% elif note.priority == '2' %}
@@ -27,6 +29,8 @@
                 {% else %}
                 <p>Исполнитель: <br>Нет</p>
                 {% endif %}
+                <p>Публично: <br>{% if note.public %}Нет{% else %}Да{% endif %}</p>
             </div>
+            {% endif %}
             {% endif %}
             {% endblock %}

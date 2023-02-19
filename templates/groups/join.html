@@ -1,0 +1,30 @@
+{% extends 'groups/base.html' %}
+
+{% block content %}
+<style>
+    #group_name{
+        width: 100%;
+        font-size: large;
+        height: 20px;
+    }
+    #group_password{
+        width: 100%;
+        height: 20px;
+        font-size: large;
+    }
+</style>
+<h1 style="position: absolute; left:34%;">Войти в группу</h1>
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    <div style="position: absolute; left:34%; width: fit-content; height: fit-content; top:20%">
+        <p><b>Название группы</b></p>
+        <span>{{ form.group_name }}</span>
+    </div>
+    <div style="position: absolute; left:34%; width: fit-content; height: fit-content; top:40%">
+        <p><b>Пароль группы (необяз.)</b></p>
+        <span>{{ form.group_password }}</span>
+    </div>
+    <button style="position:absolute; top:60%; left:39%" type="submit">Войти в группу</button>
+</form>
+<p style="position: absolute; top:70%; left: 45%;">или <a href="/group/create/">создать</a></p>
+{% endblock %}

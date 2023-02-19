@@ -1,4 +1,4 @@
-from .models import Notes, User
+from .models import Notes, User, Group
 from django import forms
 from django.forms import ModelForm
 class ContactForm(ModelForm):
@@ -14,12 +14,20 @@ class ContactForm(ModelForm):
         }
         exclude = ('worker','date', 'status')
 
+class GroupForm(ModelForm):
+    class Meta:
+        model = Group
+        widgets = {
+            'group_name': forms.TextInput(attrs={'id': 'group_name', 'autocomplete': 'off'}),
+            'group_password': forms.PasswordInput(attrs={'id': 'group_password', 'autocomplete': 'off'})
+        }
+        fields = ['group_password', 'group_name']
 
 class LoginForm(ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'password']
         widgets = {
             'username': forms.TextInput(attrs={'id': 'username'}),
-            'password': forms.TextInput(attrs={'id': 'password'})
+            'password': forms.PasswordInput(attrs={'id': 'password'})
         }
+        exclude = ('group',)
