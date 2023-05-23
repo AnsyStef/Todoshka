@@ -1,36 +1,27 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-{% block condition %}
+{% block content %}
 <title>Todoshka: Completed</title>
 {% if note.is_public or note.creator == user.username %}
-{% if 'Выполнено' in note.status %}
-        <div class="note" onclick="window.location=`{% url 'note_detail' pk=note.pk %}`">
-            <p>Название:<br>{{ note.name }}</p>
-            <p style="position:relative">Важность<br>
-                {% if note.priority == '3' %}
-                <span style="color: red; -webkit-text-stroke: 0.5px black;">Очень важно</span>
-                {% elif note.priority == '2' %}
-                <span style="color: orange; -webkit-text-stroke: 0.5px black;">Важно</span>
-                {% elif note.priority == '1' %}
-                <span style="color: green; -webkit-text-stroke: 0.5px black;">Не важно</span>
-                {% endif %}
-            </p>
-            <p>Статус: <br>
-                {% if 'Выполнено' in note.status %}
-                <span style="color: green; -webkit-text-stroke: 0.5px black;">Выполнено</span>
-                {% elif note.status == 'Выполняется' %}
-                <span style="color: orange; -webkit-text-stroke: 0.5px black;">Выполняется</span>
-                {% elif note.status == 'Ожидает исполнителя' %}
-                <span style="color: black;">Ожидает исполнителя</span>
-                {% endif %}
-            </p>
-            {% if note.worker %}
-            <p>Исполнитель: <br>{{ note.worker }}</p>
-            {% else %}
-            <p>Исполнитель: <br>Нет</p>
+    {% if note.status == '3' %}
+    <tr onclick="window.location=`{% url 'note_detail' pk=note.pk %}`">
+        <td class="priority{{note.priority}}" id="priority">{{ note.name }}</td>
+        <td class="status{{note.status}}" id="status">
+            {% if note.status == '3' %}
+            <span>Выполнено</span>
+            {% elif note.status == '2' %}
+            <span>Выполняется</span>
+            {% elif note.status == '1' %}
+            <span>Ожидает исполнителя</span>
             {% endif %}
-            {% endif %}
-        </div>
-        {% endif %}
+        </td>
+        <td>{{note.creator}}</td>
+        <td>
+            {{ note.worker }}
+        </td>
+        <td>{% if note.public %}Нет{% else %}Да{% endif %}</td>
+    </tr>
+    {% endif %}
+{% endif %}
 {% endblock %}

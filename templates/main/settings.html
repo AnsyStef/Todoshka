@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'themes/'|add:theme.theme|add:'/settings.css' %}">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="image/png" sizes="32x32" rel="icon" href="{% static 'notes/media/logo.ico' %}">
+        <script src="{% static 'common/js/script.js' %}"></script>
+        <title>Настройки</title>
+    </head>
+
+    <body>
+        <a href="/"><img style="width: 100px; height: 100px;" src="{% static 'common/img/logo.png' %}"></a>
+
+        <h2>Изменение темы</h2>
+        <div id="themes">
+            <div class="theme" style="display: inline;" onclick="window.location=`{% url 'changeTheme' username=user.username theme='forest' %}`">
+                <img src="{% static 'themes/forest/main.png' %}" style="width: 200px; height: 100px;">
+            </div>
+            <div class="theme" style="display: inline;" onclick="window.location=`{% url 'changeTheme' username=user.username theme='city' %}`">
+                <img src="{% static 'themes/city/main.png' %}" style="width: 200px; height: 100px;">
+            </div>
+            <div class="theme" style="display: inline;" onclick="window.location=`{% url 'changeTheme' username=user.username theme='mountians' %}`">
+                <img src="{% static 'themes/mountians/main.png' %}" style="width: 200px; height: 100px;">
+            </div>
+        </div>
+
+        <!-- <h2>Изменение данных аккаунта</h2>
+        <div id="acc-data">
+            <form action="/{{user.username}}/settings/?changedata" method="post" autocomplete="off">
+                {% csrf_token %}
+                {{ form.username }}
+                {{ form.password }}
+                <button type="submit">Сохранить</button>
+            </form>
+        </div> -->
+    </body>
+
+</html>

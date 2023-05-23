@@ -1,0 +1,75 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    min-height: 98.1vh;
+    background-color: black;
+    background: no-repeat;
+    background-image: url('group.png');
+    background-size: cover;
+}
+html{
+    font-family: 'Franklin Gothic Medium';
+}
+
+button{
+    color: black;
+    padding: 10px 20px;
+    width: fit-content;
+    text-decoration:none;
+    text-align:center;
+    margin:20px auto;
+    display: block;
+    background-position: 100% 0;
+    background-size: 200% 100%;
+    transition: all .25s ease-in;
+    font: 400 18px tahoma;
+    border: none;
+    border-radius: 8px;
+}
+form button{
+    background-image: linear-gradient(to left,transparent,transparent 50%,#ffffff 50%,#8e8e8e);
+}
+button:hover{
+    background-position: 0 0;
+    color:black;
+}
+#join_bg{
+    background-color: rgba(217, 217, 217, 0.244);
+    width: 700px; height: 600px;
+    border-radius: 15px;
+    position: absolute; left:29%;
+    top:10%;
+}
+
+#leave-btn{
+    position: absolute;
+    display: inline;
+    margin: 2.5% 1% auto auto;
+    right:0;
+    background-image: linear-gradient(to left,transparent,transparent 50%,#ffffff 50%,#8e8e8e);
+}
+
+#group-stats, #group-members-list, #group-activity, .member{
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-family: 'Franklin Gothic Medium';
+    border-radius: 8px;
+}
+#group-members-list{
+    left: 0;
+    width: 30%;
+}
+.member{
+    margin-top: 10px;
+    padding-left: 5px;
+    font-size: xx-large;
+}
+
+.member:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+#group-stats, #group-activity{
+    right: 0;
+    width: 70%;
+    height: 40%;
+    margin: auto 0.3% 1% 0.3%;
+}

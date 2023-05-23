@@ -1,0 +1,34 @@
+
+<head>
+    <script src="{% static 'notif/js/script.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'notif/css/style.css' %}">
+    <script>
+        window.onload = function numplus(){let num = 0;}
+        function createError(){
+            num = Math.random(1,10);
+            const $elem = document.createElement('div');
+            $elem.id = 'notif-body';
+            closeBtn = document.createElement('button');
+            closeBtn.setAttribute("id", "closebtn");
+            closeBtn.textContent = 'X';
+            closeBtn.setAttribute('onclick', 'closeNotif(this)')
+            $elem.innerHTML = `Ошибка ТЕСТ ${num}`;
+            parent = document.getElementById('wrapper');
+            parent.prepend($elem);
+            $elem.appendChild(closeBtn);
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="notif-body">
+            <button id="closebtn" onclick="closeNotif(this)">X</button>
+            Ошибка 2
+        </div>
+        <div id="notif-body">
+            <button id="closebtn" onclick="closeNotif(this)">X</button>
+            Ошибка 1
+        </div>
+    </div>
+</body>
+</html>

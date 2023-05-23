@@ -1,0 +1,155 @@
+body{
+    background-image: url('main.png');
+    opacity: 70;
+    margin: 0;
+    padding-left: 65px;
+}
+html{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#priority{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.priority3{
+    border-left: red solid 5px;
+}
+.priority2{
+    border-left: orange solid 5px;
+}
+.priority1{
+    border-left: green solid 5px;
+}
+
+
+#status{
+    -webkit-text-stroke: 0.5px black;
+}
+.status1{
+    color: red;
+}
+.status2{
+    color: orange;
+}
+.status3{
+    color: green;
+}
+
+
+table {
+	width: 100%;
+	border: none;
+	margin-bottom: 20px;
+    background-color:rgba(133, 255, 133, 0.344);
+    opacity: 30;
+}
+table thead th {
+	padding: 10px;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 20px;
+	text-align: left;
+	color: black;
+	border-top: 2px solid green;
+	border-bottom: 2px solid green;
+}
+table tbody td {
+	padding: 10px;
+	font-size: 14px;
+	line-height: 20px;
+	color: black;
+	border-bottom: 1px solid green;
+}
+table tbody tr:hover{
+    transition: 0.2s;
+    box-shadow:0px -5px 0 green inset;
+}
+#tab{
+    position: fixed;
+    height: 100%;
+    width: 60px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color:rgba(54, 144, 49, 0.626);
+    color: black;
+    font-size: larger;
+}
+#menu-btn{
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    right: 0;
+    width: 60px;
+    height: 40px;
+    z-index: 10;
+}
+#exit-btn{
+    position: absolute;
+    right: 0;
+    bottom:0;
+    width: 40px;
+    height: 40px;
+}
+#tab p{
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
+}
+
+#tab-content{
+    display: none;
+}
+
+#tab-content button{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: none;
+    text-decoration:none;
+    display:block;
+    width: 100%;
+    text-align:center;
+    margin:20px auto;
+    padding:10px 10px;
+    color: black;
+    transition:all 0.3s;
+    border: none;
+}
+#tab-content button:hover{
+    box-shadow:0px -5px 0 green inset;
+}
+button{
+    font-family: 'Jura';
+    background: none;
+    text-decoration:none;
+    display:block;
+    text-align:center;
+    margin:20px auto;
+    padding:10px 10px;
+    transition:all 0.3s;
+    border: none;
+}
+button:hover{
+    box-shadow:0px -5px 0 #088 inset;
+}
+.note{
+    z-index: 2;
+    margin-top: 2%;
+    margin-right: 1%;
+    margin-left: 5%;
+    padding-left: 5px;
+    background-color: rgba(255, 255, 255, 0.4);
+    font-family: 'Jura';
+    border-radius: 8px;
+    width: fit-content;
+    height: 60px;
+}
+.note:hover{
+    background-color: rgba(200, 200, 200, 0.4);
+}
+.note p{
+    display: inline-table;
+    margin-right: 40px;
+}

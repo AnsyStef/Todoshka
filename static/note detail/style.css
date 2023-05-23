@@ -1,0 +1,62 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    min-height: 98.1vh;
+    background-color: black;
+    background: no-repeat;
+    background-image: linear-gradient(125deg,#042a7da3,#9108f488);
+  }
+#info{
+    background-color: rgba(255, 255, 255, 0.4);
+    font-size: large;
+    font-family: 'Franklin Gothic Medium';
+    border-radius: 10px;
+    width: fit-content;
+    margin: 10px;
+    padding-left: 5px;
+    padding-bottom: 3px;
+    padding-right: 5px;
+}
+#buttons{
+    border-radius: 10px;
+    left: 10px;
+    position: relative;
+}
+#accept{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Bold, sans-serif;
+    font-size: x-large;
+    background-color: rgb(0, 255, 0);
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    height: 70px;
+}
+#delete{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Bold, sans-serif;
+    font-size: x-large;
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    height: 70px;
+    left: 220px;
+}
+button{
+    position: absolute;
+    top: 40px;
+    margin: 5px;
+    text-decoration: none;
+    background: rgba(0, 132, 255, 0.77);;
+    color: #f7f0f0;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 15px;
+    transition: 0.4s;
+    box-shadow: 0px 4px 10px rgba(103, 95, 95, 0.54), 0px 10px 30px -15px rgba(14, 14, 14, 0.42);
+    border: 2px solid #e3e6ec;
+}
+#accept:hover{
+    background-image: linear-gradient(125deg,#15b700eb,#000000c5);
+}
+#delete:hover{
+    background-image: linear-gradient(125deg,#b70000eb,#000000c5);
+}

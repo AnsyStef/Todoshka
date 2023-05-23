@@ -25,11 +25,19 @@ SECRET_KEY = 'django-insecure-l6ud-ev%cexe&#vlz!_difl=x*4#g_qae=5+398ynz*=q35l7f
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ["6efb-84-53-216-17.ngrok.io", "127.0.0.1", "192.168.99.102"]
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.99.102", 'localhost', '95cc-213-167-217-75.ngrok-free.app']
 
-CSRF_TRUSTED_ORIGINS = ['https://6efb-84-53-216-17.ngrok.io']
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_REPLACE_HTTPS_REFERER = True
 
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'http')
 
+CSRF_TRUSTED_ORIGINS = ['https://95cc-213-167-217-75.ngrok-free.app']
 # Application definition
 
 INSTALLED_APPS = [
@@ -70,6 +78,10 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+)
 
 WSGI_APPLICATION = 'Todoshka.wsgi.application'
 
@@ -119,7 +131,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = ["static/", 'static/common/', 'static/auth/', 'static/detail','static/post_new/','static/registration/']
+STATICFILES_DIRS = ["static/", 'static/common/', 'static/auth/', 'static/registration/']
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = f'{BASE_DIR}/media'
+DEFAULT_FILE_STORAGE = ['media/themes/']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

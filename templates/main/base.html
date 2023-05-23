@@ -2,40 +2,56 @@
 <html lang="en">
     <head>
         {% load static %}
+        <link rel="stylesheet" href="{% static 'themes/'|add:theme.theme|add:'/main_style.css' %}">
 
-        <link rel="stylesheet" href="{% static 'common/style.css' %}">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link type="image/png" sizes="32x32" rel="icon" href="{% static 'common/logo.ico' %}">
+        <link type="image/png" sizes="32x32" rel="icon" href="{% static 'notes/media/logo.ico' %}">
         <script src="{% static 'common/js/script.js' %}"></script>
 
     </head>
     <body>
         <div class="wrapper">
             <div id="tab">
-                <img id="menu-btn" src="{% static 'common/svg/menu.svg' %}" onclick="TabController()" alt="Меню" style="z-index: 10;">
+                <img id="menu-btn" src="{% static 'notes/svg/menu.svg' %}" onclick="TabController()" alt="Меню">
                 <div id="tab-content">
                     <p>{{ user.username }}</p>
                     <button class="menu-btn" onclick="window.location=`{% url 'post' username=user.username %}`">Добавить</button>
+                    <button class="menu-btn" onclick="window.location='/'">Все</button>
                     <button class="menu-btn" onclick="window.location=`{% url 'my_notes' username=user.username %}`">Принятые</button>
                     <button class="menu-btn" onclick="window.location='/notes/completed/'">Выполненные</button>
                     <button class="menu-btn" onclick="window.location='/notes/free/'">Свободные</button>
                     <button class="menu-btn" onclick="window.location='/group/join/'">Группа</button>
+                    <button class="menu-btn" onclick="window.location=`{% url 'settings' username=user.username %}`">Настройки</button>
                     <button id="exit-btn" onclick="window.location='/logout/'">Выйти</button>
                 </div>
             </div>
         </div>
-        {% block content %}{% endblock %}
-        {% for note in note_list %}
-        {% if user.username in members_list %}
-        {% if user.username in members_list and note.creator in members_list%}
-            {% block condition %}{% endblock %}
-        {% endif %}
+        {% if request_user != 0 %}
+        <table class="table_sort">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Статус</th>
+                    <th>Создатель</th>
+                    <th>Исполнитель</th>
+                    <th>Публично</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for note in note_list %}
+                {% if user.username in members_list and note.creator in members_list %}
+                {% block content %}
+                {% endblock %}
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+
         {% else %}
         <h1 style="position: absolute; margin: 5% auto 0 30%;">Для начала работы вступите в группу.</h1>
         <button onclick="window.location='/group/join/'" style="font-size: x-large; margin: 10% auto 0 47%; position: absolute;">Вступить</button>
         {% endif %}
-        {% endfor %}
     </body>
 </html>

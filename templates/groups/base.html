@@ -3,17 +3,17 @@
     <head>
         {% load static %}
 
-        <link rel="stylesheet" href="{% static 'groups/style.css' %}">
+        <link rel="stylesheet" href="{% static 'themes/'|add:theme.theme|add:'/group_style.css' %}">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link type="image/png" sizes="32x32" rel="icon" href="{% static 'common/logo.ico' %}">
+        <link type="image/png" sizes="32x32" rel="icon" href="{% static 'common/img/logo.ico' %}">
         <script src="{% static 'common/script.js' %}"></script>
 
     </head>
     <body>
-        <a href="/"><img style="width: 100px; height: 100px; top: 2px;" src="{% static 'common/logo.png' %}"></a>
-        <div style="background-color: rgba(255, 255, 255, 0.4); width: 700px; height: 600px; border-radius: 15px; position: absolute; left:29%; top:10%">
+        <a href="/"><img style="width: 100px; height: 100px; top: 2px;" src="{% static 'common/img/logo.png' %}"></a>
+        <div id="join_bg">
             {% block content %}
             {% endblock %}
         </div>

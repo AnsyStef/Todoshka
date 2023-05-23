@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% block "head" %}
+    {% load static %}
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'auth/style.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'notes/media/logo.ico' %}">
+    <script>
+        window.onload = Notification.requestPermission(function(permission){
+        // переменная permission содержит результат запроса
+        console.log('Результат запроса прав:', permission);
+        });
+    </script>
+</head>
+<body>
+
+    <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="{% static 'common/img/img-01.png' %}" alt="IMG">
+				</div>
+                {% block 'content' %}
+                {% endblock %}
+
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>

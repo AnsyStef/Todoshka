@@ -1,0 +1,62 @@
+{% extends 'auth/base.html' %}
+
+{% block "head" %}
+<title>Todoshka: Вход</title>
+{% endblock %}
+
+{% block 'content' %}
+{% load static %}
+{% if "?reg=success/" in request.get_full_path %}
+<script>
+window.onload = function() {
+    var notification = new Notification(
+        'Регистрация',
+        {body: 'Вы успешно зарегестрированы', dir: 'auto', icon: "{% static 'common/img/logo.png' %}"});
+    }
+</script>
+{% endif %}
+<form class="login100-form validate-form" method="post" autocomplete="off">
+    {% csrf_token %}
+    <span class="login100-form-title">
+        Вход
+    </span>
+
+    <div class="wrap-input100 validate-input">
+        {{ form.email }}
+        <span class="focus-input100"></span>
+        <span class="symbol-input100">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </span>
+    </div>
+
+    <div class="wrap-input100 validate-input">
+        {{ form.password }}
+        <span class="focus-input100"></span>
+        <span class="symbol-input100">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+        </span>
+    </div>
+    
+    <div class="container-login100-form-btn">
+        <button class="login100-form-btn" type="submit">
+            Вход
+        </button>
+    </div>
+
+    <div class="text-center p-t-12">
+        <span class="txt1">
+            Забыл(а)
+        </span>
+        <a class="txt2" href="#">
+            Имя пользователя / пароль ?
+        </a>
+    </div>
+
+    <div class="text-center p-t-136">
+        <a class="txt2" href="/registration/">
+            Регистрация
+            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+        </a>
+    </div>
+</form>
+{% endblock %}
